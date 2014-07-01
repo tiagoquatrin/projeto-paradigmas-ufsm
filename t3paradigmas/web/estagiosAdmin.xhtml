@@ -1,0 +1,130 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+        <head>
+            <title>T3</title>
+            <link rel="shortcut icon" href="favicon.ico"/>
+            <link type="text/css" href="style.css" rel="stylesheet"/>
+            <link type="text/css" href="table.css" rel="stylesheet"/>
+	</head>
+	<h:body>
+		<div class="container" style="display: block;">
+			<header>
+                            <h1>Ferramentas do Administrador</h1>
+				<menu>
+					<ul>
+						<li><div id="b1"><a href="principalAdmin.xhtml">INÍCIO</a></div></li>
+						<li><div id="b2"><a href="bolsasAdmin.xhtml">BOLSAS</a></div></li>
+						<li><div id="b3"><a href="#">ESTÁGIOS</a></div></li>
+                                                <li><div id="b5"><a href="empregosAdmin.xhtml">EMPREGOS</a></div></li>
+                                                <li><div id="b6"><a href="palavra-chaveAdmin.xhtml">PALAVRA-CHAVE</a></div></li>
+						<li><div id="b4"><a href="index.xhtml">log-out</a></div></li>
+					</ul>
+				</menu>
+			</header>
+                    
+			<div class="contentComp">
+                            <h:form>
+                                <fieldset style="width: 250px;margin-left: 355px;margin-top:10px;">
+                                    <legend>
+                                        Cadastrar Estágio
+                                    </legend>
+                                    <table id="formTopo">
+                                        <tr>
+                                            <td>
+                                                Local:
+                                            </td>
+                                            <td>
+                                                <h:inputText id="a" value="#{est.vaga.loc}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Descrição:
+                                            </td>
+                                            <td>
+                                                <h:inputText id="b" value="#{est.vaga.descricao}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Título:
+                                            </td>
+                                            <td>
+                                                <h:inputText id="c" value="#{est.vaga.titulo}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Contato:
+                                            </td>
+                                            <td>
+                                                <h:inputText id="d" value="#{est.vaga.contato}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Carga Horária:
+                                            </td>
+                                            <td>
+                                                <h:inputText id="e" value="#{est.vaga.cargahoraria}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Valor:
+                                            </td>
+                                            <td>
+                                                <h:inputText id="f" value="#{est.vaga.valor}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Órgão:
+                                            </td>
+                                            <td>
+                                                <h:inputText id="g" value="#{est.estagio.orgao}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                            </td>
+                                        </tr>                                        
+                                        <tr>                                            
+                                            <td>
+                                                <h:commandButton value="Adicionar" action="#{est.inserirEstagio}"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </fieldset>
+                                <br/>
+                                <h:dataTable value="#{est.arrayestagio}" var="Estagio" style="margin-left:385px;" styleClass="tabelaBaixo" headerClass="tabelaBaixoCabecalho" rowClasses="linha1, linha2">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            ID:
+                                        </f:facet>
+                                        #{Estagio.idestagio}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Órgão:
+                                        </f:facet>
+                                        #{Estagio.orgao}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Excluir:
+                                        </f:facet>
+                                        <h:commandButton value="X" action="#{est.excluir(Estagio)}" immediate="true"/>
+                                    </h:column>
+                                </h:dataTable>
+                                <br/>
+                                <h:commandButton value="Ver Estágios" action="#{est.buscarEstagio()}" immediate="true"/>
+                            </h:form>
+                        </div>
+			
+                    <div class="footer">				
+				<texto>
+                                       Desenvolvido por Eduardo Rosso Cargnelutti e Tiago Quatrin da Silva.
+                                </texto>
+			</div>
+		
+           </div>
+	</h:body>
+</html>

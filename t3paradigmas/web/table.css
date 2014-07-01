@@ -1,0 +1,38 @@
+#formTopo{
+    color: white;
+    font-family: Tahoma;
+    font-size: 13px;
+    text-align: right;
+}
+
+.tabelaBaixo{
+   border: thin solid black;
+   margin-left: 120px;
+   margin-top: 20px;
+}
+.TabelaBaixoCabecalho{
+   text-align: center;
+   font-style: italic;
+   color: Snow;
+   background: #3C4141;
+   padding: 5px 10px 5px 10px
+}
+.linha2{
+   height: 25px;
+   text-align: center;
+   background: #A2A2A2;
+}
+
+.linha1{
+   height: 25px;
+   text-align: center;
+   background: #D6D6D6;
+}
+
+.tabelaVerComps{
+   border: thin solid black;
+   margin-left: 7px;
+   margin-top: 20px;
+    
+    
+}
