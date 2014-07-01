@@ -1,0 +1,80 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+        <head>
+            <title>T3</title>
+            <link rel="shortcut icon" href="favicon.ico"/>
+            <link type="text/css" href="style.css" rel="stylesheet"/>
+            <link type="text/css" href="table.css" rel="stylesheet"/>
+	</head>
+	<h:body>
+		<div class="container" style="display: block;">
+			<header>
+				<h1>Bem vindo(a) ao sistema de oportunidades, #{logar.aluno.nome}.</h1>
+				<menu>
+					<ul>
+						<li><div id="b1"><a href="principal.xhtml">INÍCIO</a></div></li>
+						<li><div id="b2"><a href="#">BOLSAS</a></div></li>
+						<li><div id="b3"><a href="estagios.xhtml">ESTÁGIOS</a></div></li>
+                                                <li><div id="b5"><a href="empregos.xhtml">EMPREGOS</a></div></li>
+                                                <li><div id="b6"><a href="palavra-chave.xhtml">PALAVRA-CHAVE</a></div></li>
+						<li><div id="b4"><a href="index.xhtml">log-out</a></div></li>
+					</ul>
+				</menu>
+			</header>
+                    
+			<div class="content">
+                            <h:form>
+                                
+                                <fieldset style="width: 250px;margin-left: 355px;margin-top:10px;">
+                                    <legend>
+                                        Bolsas
+                                    </legend>
+                                    <table id="formTopo">                                    
+                                        <tr>
+                                            <h:commandButton value="Mostrar Todas" action="#{bol.buscarBolsa()}"/>
+                                        </tr>
+                                    </table>
+                                </fieldset>
+                                
+                                <br/>
+                                <h:dataTable value="#{bol.arraybolsa}" var="Bolsa" style="margin-left: 185.5px;" styleClass="tabelaBaixo" headerClass="tabelaBaixoCabecalho" rowClasses="linha1, linha2">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            ID
+                                        </f:facet>
+                                        #{Bolsa.idbolsa}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Nome do Orientador
+                                        </f:facet>
+                                        #{Bolsa.nomeOrientador}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Endereço do Orientador
+                                        </f:facet>
+                                        #{Bolsa.enderecoOrientador}
+                                    </h:column>  
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Duração da Bolsa
+                                        </f:facet>
+                                        #{Bolsa.duracao}
+                                    </h:column>
+                                </h:dataTable>
+                                <br/>
+                                
+                            </h:form>  
+                        </div>
+			
+                    <div class="footer">				
+				<texto>
+                                       Desenvolvido por Eduardo Rosso Cargnelutti e Tiago Quatrin da Silva.
+                                </texto>
+			</div>
+		
+           </div>
+	</h:body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+   <head>
+      <title>T3</title>
+      <link type="text/css" href="style.css" rel="stylesheet"/>
+   </head>
+   <h:body>
+      <div class="container" style="display: block;">
+
+         <h:form class="login">
+            <h3>Sistema de Oportunidades</h3>
+            <h:inputText value="#{logar.aluno.matricula}"/>
+            <br/>
+            <h:inputSecret value="#{logar.aluno.senha}"/>
+            <br/>
+            <h:commandButton value="Login" action="#{logar.login}"/>
+            <br/>
+        </h:form>
+         
+      </div>
+   </h:body>
+</html>
