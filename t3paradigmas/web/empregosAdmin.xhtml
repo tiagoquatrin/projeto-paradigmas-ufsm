@@ -90,6 +90,9 @@
                                             <td>
                                                 <h:commandButton value="Adicionar" action="#{emp.inserirEmprego}"/>
                                             </td>
+                                            <td>
+                                                <h:commandButton value="Editar Empregos" action="empregosAdminEditar.xhtml" immediate="true" />
+                                            </td>
                                         </tr>
                                     </table>
                                 </fieldset>
@@ -97,19 +100,19 @@
                                 <h:dataTable value="#{emp.arrayemprego}" var="Emprego" style="margin-left:385px;" styleClass="tabelaBaixo" headerClass="tabelaBaixoCabecalho" rowClasses="linha1, linha2">
                                     <h:column>
                                         <f:facet name="header">
-                                            ID:
+                                            ID
                                         </f:facet>
                                         #{Emprego.idemprego}
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">
-                                            Órgão:
+                                            Benefícios
                                         </f:facet>
                                         #{Emprego.beneficios}
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">
-                                            Excluir:
+                                            Excluir
                                         </f:facet>
                                         <h:commandButton value="X" action="#{emp.excluir(Emprego)}" immediate="true"/>
                                     </h:column>

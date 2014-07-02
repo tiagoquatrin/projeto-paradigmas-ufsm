@@ -86,7 +86,7 @@ public class EstagioDAO implements Serializable {
     
     
     
-    public void inserirEstagio(){
+    public void inserirEstagio() throws SQLException{
         
     Connection conexao = abrir();
                   
@@ -133,6 +133,8 @@ public class EstagioDAO implements Serializable {
     vaga.setValor(0);
     estagio.setOrgao("");
 
+    // Para atualizar a tabela sem precisar clicar em Mostrar de novo.
+    buscarEstagio();
 }
     
     public void excluir(Estagio est) throws SQLException{
@@ -153,6 +155,49 @@ public class EstagioDAO implements Serializable {
             }
           
             
+            // Para atualizar a tabela sem precisar clicar em Mostrar de novo.
+            buscarEstagio();
+        }
+    
+    public void editarEstagio() throws SQLException{
+            Connection conexao = abrir();
+            
+            int id = vaga.getId();
+            
+            try{                                
+               PreparedStatement ps;
+               ps = conexao.prepareStatement("UPDATE vaga SET loc=?, descricao=?, titulo=?, contato=?, cargahoraria=?, valor=? WHERE id = "+ id +"");
+               ps.setString(1, vaga.getLoc());
+               ps.setString(2, vaga.getDescricao());
+               ps.setString(3, vaga.getTitulo());
+               ps.setString(4, vaga.getContato());
+               ps.setInt(5, vaga.getCargahoraria());
+               ps.setInt(6, vaga.getValor());
+               ps.executeUpdate();
+               ps.close();
+
+
+               ps = conexao.prepareStatement("UPDATE estagio SET orgao=? WHERE idestagio = "+ id +"");
+               ps.setString(1, estagio.getOrgao());
+               ps.executeUpdate();
+               ps.close();
+
+               conexao.close();
+
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+    
+            // Apenas para limpar os campos após serem inseridos no banco de dados.
+            vaga.setId(0);
+            vaga.setLoc("");
+            vaga.setDescricao("");
+            vaga.setTitulo("");
+            vaga.setContato("");
+            vaga.setCargahoraria(0);
+            vaga.setValor(0);
+            estagio.setOrgao("");
+    
             // Para atualizar a tabela sem precisar clicar em Mostrar de novo.
             buscarEstagio();
         }

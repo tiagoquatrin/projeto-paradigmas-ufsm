@@ -88,7 +88,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                Endereço do Orientador:
+                                                Lattes do Orientador:
                                             </td>
                                             <td>
                                                 <h:inputText id="h" value="#{bol.bolsa.enderecoOrientador}" required="true" requiredMessage="Os campos são obrigatórios"/>
@@ -106,38 +106,41 @@
                                             <td>
                                                 <h:commandButton value="Adicionar" action="#{bol.inserirBolsa}"/>
                                             </td>
+                                            <td>
+                                                <h:commandButton value="Editar Bolsas" action="bolsasAdminEditar.xhtml" immediate="true"/>
+                                            </td>
                                         </tr>
                                     </table>
                                 </fieldset>
                                 <br/>
-                                <h:dataTable value="#{bol.arraybolsa}" var="Bolsa" styleClass="tabelaBaixo" headerClass="tabelaBaixoCabecalho" rowClasses="linha1, linha2">
+                                <h:dataTable value="#{bol.arraybolsa}" var="Bolsa" style="margin-left: 165px;" styleClass="tabelaBaixo" headerClass="tabelaBaixoCabecalho" rowClasses="linha1, linha2">
                                     <h:column>
                                         <f:facet name="header">
-                                            ID:
+                                            ID
                                         </f:facet>
                                         #{Bolsa.idbolsa}
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">
-                                            Nome do Orientador:
+                                            Nome do Orientador
                                         </f:facet>
                                         #{Bolsa.nomeOrientador}
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">
-                                            Endereço do Orientador:
+                                            Lattes do Orientador
                                         </f:facet>
                                         #{Bolsa.enderecoOrientador}
                                     </h:column>                                    
                                     <h:column>
                                         <f:facet name="header">
-                                            Duração:
+                                            Duração
                                         </f:facet>
                                         #{Bolsa.duracao}
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">
-                                            Excluir:
+                                            Excluir
                                         </f:facet>
                                         <h:commandButton value="X" action="#{bol.excluir(Bolsa)}" immediate="true"/>
                                     </h:column>

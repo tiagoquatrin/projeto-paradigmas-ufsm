@@ -94,7 +94,7 @@ public class BolsaDAO implements Serializable{
     
     
     
-    public void inserirBolsa(){
+    public void inserirBolsa() throws SQLException{
         
     Connection conexao = abrir();
                   
@@ -144,6 +144,10 @@ public class BolsaDAO implements Serializable{
     bolsa.setNomeOrientador("");
     bolsa.setEnderecoOrientador("");
     bolsa.setDuracao("");
+    
+    // Para atualizar a tabela sem precisar clicar em Mostrar de novo.
+    buscarBolsa();
+    
 }
     
     public void excluir(Bolsa b) throws SQLException{
@@ -167,5 +171,52 @@ public class BolsaDAO implements Serializable{
             // Para atualizar a tabela sem precisar clicar em Mostrar de novo.
             buscarBolsa();
         }
-  
+
+    
+    public void editarBolsa() throws SQLException{
+            Connection conexao = abrir();
+            
+            int id = vaga.getId();
+            
+            try{                                
+               PreparedStatement ps;
+               ps = conexao.prepareStatement("UPDATE vaga SET loc=?, descricao=?, titulo=?, contato=?, cargahoraria=?, valor=? WHERE id = "+ id +"");
+               ps.setString(1, vaga.getLoc());
+               ps.setString(2, vaga.getDescricao());
+               ps.setString(3, vaga.getTitulo());
+               ps.setString(4, vaga.getContato());
+               ps.setInt(5, vaga.getCargahoraria());
+               ps.setInt(6, vaga.getValor());
+               ps.executeUpdate();
+               ps.close();
+
+
+               ps = conexao.prepareStatement("UPDATE bolsa SET nomeorientador=?, enderecoorientador=?, duracao=? WHERE idbolsa = "+ id +"");
+               ps.setString(1, bolsa.getNomeOrientador());
+               ps.setString(2, bolsa.getEnderecoOrientador());
+               ps.setString(3, bolsa.getDuracao());
+               ps.executeUpdate();
+               ps.close();
+
+               conexao.close();
+
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+    
+            // Apenas para limpar os campos após serem inseridos no banco de dados.
+            vaga.setId(0);
+            vaga.setLoc("");
+            vaga.setDescricao("");
+            vaga.setTitulo("");
+            vaga.setContato("");
+            vaga.setCargahoraria(0);
+            vaga.setValor(0);
+            bolsa.setNomeOrientador("");
+            bolsa.setEnderecoOrientador("");
+            bolsa.setDuracao("");
+            
+            // Para atualizar a tabela sem precisar clicar em Mostrar de novo.
+            buscarBolsa();
+        }
 }
