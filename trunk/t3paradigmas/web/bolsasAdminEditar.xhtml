@@ -15,7 +15,7 @@
 					<ul>
 						<li><div id="b1"><a href="principalAdmin.xhtml">INÍCIO</a></div></li>
 						<li><div id="b2"><a href="bolsasAdmin.xhtml">BOLSAS</a></div></li>
-						<li><div id="b3"><a href="#">ESTÁGIOS</a></div></li>
+						<li><div id="b3"><a href="estagiosAdmin.xhtml">ESTÁGIOS</a></div></li>
                                                 <li><div id="b5"><a href="empregosAdmin.xhtml">EMPREGOS</a></div></li>
                                                 <li><div id="b6"><a href="palavra-chaveAdmin.xhtml">PALAVRA-CHAVE</a></div></li>
 						<li><div id="b4"><a href="index.xhtml">log-out</a></div></li>
@@ -27,15 +27,23 @@
                             <h:form>
                                 <fieldset style="width: 250px;margin-left: 355px;margin-top:10px;">
                                     <legend>
-                                        Cadastrar Estágio
+                                        Editar Bolsa
                                     </legend>
                                     <table id="formTopo">
+                                        <tr>
+                                            <td>
+                                                ID da bolsa a substituir:
+                                            </td>
+                                            <td>
+                                                <h:inputText id="aa" value="#{bol.vaga.id}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td>
                                                 Local:
                                             </td>
                                             <td>
-                                                <h:inputText id="a" value="#{est.vaga.loc}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                                <h:inputText id="a" value="#{bol.vaga.loc}" required="true" requiredMessage="Os campos são obrigatórios"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -43,7 +51,7 @@
                                                 Descrição:
                                             </td>
                                             <td>
-                                                <h:inputText id="b" value="#{est.vaga.descricao}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                                <h:inputText id="b" value="#{bol.vaga.descricao}" required="true" requiredMessage="Os campos são obrigatórios"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -51,7 +59,7 @@
                                                 Título:
                                             </td>
                                             <td>
-                                                <h:inputText id="c" value="#{est.vaga.titulo}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                                <h:inputText id="c" value="#{bol.vaga.titulo}" required="true" requiredMessage="Os campos são obrigatórios"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -59,7 +67,7 @@
                                                 Contato:
                                             </td>
                                             <td>
-                                                <h:inputText id="d" value="#{est.vaga.contato}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                                <h:inputText id="d" value="#{bol.vaga.contato}" required="true" requiredMessage="Os campos são obrigatórios"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -67,7 +75,7 @@
                                                 Carga Horária:
                                             </td>
                                             <td>
-                                                <h:inputText id="e" value="#{est.vaga.cargahoraria}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                                <h:inputText id="e" value="#{bol.vaga.cargahoraria}" required="true" requiredMessage="Os campos são obrigatórios"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -75,50 +83,75 @@
                                                 Valor:
                                             </td>
                                             <td>
-                                                <h:inputText id="f" value="#{est.vaga.valor}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                                <h:inputText id="f" value="#{bol.vaga.valor}" required="true" requiredMessage="Os campos são obrigatórios"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                Órgão:
+                                                Nome do Orientador:
                                             </td>
                                             <td>
-                                                <h:inputText id="g" value="#{est.estagio.orgao}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                                <h:inputText id="g" value="#{bol.bolsa.nomeOrientador}" required="true" requiredMessage="Os campos são obrigatórios"/>
                                             </td>
-                                        </tr>                                        
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Lattes do Orientador:
+                                            </td>
+                                            <td>
+                                                <h:inputText id="h" value="#{bol.bolsa.enderecoOrientador}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Duração:
+                                            </td>
+                                            <td>
+                                                <h:inputText id="i" value="#{bol.bolsa.duracao}" required="true" requiredMessage="Os campos são obrigatórios"/>
+                                            </td>
+                                        </tr>
                                         <tr>                                            
                                             <td>
-                                                <h:commandButton value="Adicionar" action="#{est.inserirEstagio}"/>
-                                            </td>
-                                            <td>
-                                                <h:commandButton value="Editar Estágios" action="estagiosAdminEditar.xhtml" immediate="true"/>
+                                                <h:commandButton value="Substituir" action="#{bol.editarBolsa}"/>
                                             </td>
                                         </tr>
                                     </table>
                                 </fieldset>
                                 <br/>
-                                <h:dataTable value="#{est.arrayestagio}" var="Estagio" style="margin-left:385px;" styleClass="tabelaBaixo" headerClass="tabelaBaixoCabecalho" rowClasses="linha1, linha2">
+                                <h:dataTable value="#{bol.arraybolsa}" var="Bolsa" style="margin-left: 165px;" styleClass="tabelaBaixo" headerClass="tabelaBaixoCabecalho" rowClasses="linha1, linha2">
                                     <h:column>
                                         <f:facet name="header">
-                                            ID
+                                            ID:
                                         </f:facet>
-                                        #{Estagio.idestagio}
+                                        #{Bolsa.idbolsa}
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">
-                                            Órgão
+                                            Nome do Orientador:
                                         </f:facet>
-                                        #{Estagio.orgao}
+                                        #{Bolsa.nomeOrientador}
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">
-                                            Excluir
+                                            Lattes do Orientador:
                                         </f:facet>
-                                        <h:commandButton value="X" action="#{est.excluir(Estagio)}" immediate="true"/>
+                                        #{Bolsa.enderecoOrientador}
+                                    </h:column>                                    
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Duração:
+                                        </f:facet>
+                                        #{Bolsa.duracao}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Excluir:
+                                        </f:facet>
+                                        <h:commandButton value="X" action="#{bol.excluir(Bolsa)}" immediate="true"/>
                                     </h:column>
                                 </h:dataTable>
                                 <br/>
-                                <h:commandButton value="Ver Estágios" action="#{est.buscarEstagio()}" immediate="true"/>
+                                <h:commandButton value="Ver Bolsas" action="#{bol.buscarBolsa()}" immediate="true"/>
                             </h:form>
                         </div>
 			
